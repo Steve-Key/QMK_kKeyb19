@@ -110,7 +110,7 @@ RAISE
         MACRO( END ) );
     case OFFCAPS:
       return (event.pressed ?
-        MACRO( D(LCAP), D(LNUM), END ) :
+        MACRO( U(LCAP), D(LNUM), END ) :
         MACRO( END ) );
 //    case ONNUM:
 //      return (event.pressed ?
