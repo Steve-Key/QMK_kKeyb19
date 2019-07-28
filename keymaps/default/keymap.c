@@ -20,77 +20,7 @@
                         --+--              --+--
                           |w|              |f|
                           ---              ---                       */
-
-/*
-                                                  раскладки старой клавиатуры!!!
-#define _MAIN 0
-#define _RAISE 1
-#define _LOWER 2
-
-// Readability keycodes
-#define LOWER   MO(_LOWER)
-#define RAISE   MO(_RAISE)
-
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-
- MAIN
- * .-----------------------------------------------------------------------------------------------------------------------------------------------.
- * | TAB    | Q      | W      | E      | R      | T      | Y      | U      | I      | O      | P      | Backsp | Delete |   7    |   8    |   9    |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * | ESC    | A      | S      | D      | F      | G      | H      | J      | K      | L      | ;      | '      |  PgUp  |   4    |   5    |   6    |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * | SHIFT  | Z      | X      | C      | V      | B      | N      | M      | ,      | .      | /      | ENTER  |  PgDn  |   1    |   2    |   3    |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * | LCTRL  |  PAUS  | GUI    | ALT    | Lower  | Space  |  Space | Raise  | Left   | Down   | Up     | Right  |  Shift |   0    |   .    |  ENTER |
- * '-----------------------------------------------------------------------------------------------------------------------------------------------'
-
-  [_MAIN] = LAYOUT_ortho_4x16(
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, KC_DEL, KC_KP_7, KC_KP_8, KC_KP_9,
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_PGUP, KC_KP_4, KC_KP_5, KC_KP_6,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  KC_PGDN, KC_KP_1, KC_KP_2, KC_KP_3,
-  KC_LCTL, KC_PAUS, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_RSFT, KC_KP_0, KC_KP_DOT, KC_PENT
-  ),
-
-RAISE
- * .-----------------------------------------------------------------------------------------------------------------------------------------------.
- * |    `   |  1     |  2     |  3     |  4     |  5     |  6     |  7     |  8     |  9     |  0     |        | Insert |        |        |        |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |        |        |        |        |        |        |        | -      | =      | [      | ]      |   \    |  Home  |        |        |        |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |        |        |        |        |        |        |        |  ISO # |  ISO / |        |        |  PScr  |  End   |        |        |        |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |        |        |        |        |        |                 |        |  Next  |  Vol-  |  Vol+  |  Play  |        |        |        |        |
- * '-----------------------------------------------------------------------------------------------------------------------------------------------'
-
-  [_RAISE] = LAYOUT_ortho_4x16(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, KC_INS, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, KC_HOME, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, KC_NUHS, KC_NUBS, _______, _______, KC_PSCR, KC_END, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY, _______, _______, _______, _______
-  ),
-
-// LOWER
- * .-----------------------------------------------------------------------------------------------------------------------------------------------.
- * |    ~   |    !   |    @   |    #   |    $   |    %   |    ^   |    &   |    *   |    (   |    )   |        |        |        |        | Reset  |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |        |   F1   |   F2   |   F3   |   F4   |   F5   |   F6   |    _   |    +   |    {   |    }   |   |    |        |        |        |        |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |        |   F7   |   F8   |   F9   |  F10   |  F11   |  F12   | ISO ~  | ISO |  |        |        |        |        |        |        |        |
- * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |        |        |        |        |        |                 |        |        |        |        |  Mute  |        |        |        |        |
- * '-----------------------------------------------------------------------------------------------------------------------------------------------'
-
-  [_LOWER] = LAYOUT_ortho_4x16(
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,  _______, _______, _______, RESET,
-  _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_PLUS,  KC_LCBR, KC_RCBR, KC_PIPE, _______, _______, _______, _______,
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,S(KC_NUHS),S(KC_NUBS), _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MUTE, _______, _______, _______, _______
-  ),
-
-};                                         конец старых раскладов
-*/       
-
+  
     /* Macro definition */
     enum macro_id {
         ONCAPS,
@@ -112,10 +42,6 @@ RAISE
       return (event.pressed ?
         MACRO( U(LCAP), D(LNUM), END ) :
         MACRO( END ) );
-//    case ONNUM:
-//      return (event.pressed ?
-//        MACRO( D(LNUM), END ) :
-//        MACRO( END ) );
     case NUMOFFP5ON:
       return (event.pressed ?
         MACRO( U(LNUM), W(10), T(P5), W(10), D(LNUM), END ) :
@@ -129,114 +55,23 @@ RAISE
 #define _ARROWS 1         // 1: On the two hand — arrows keys
 #define _NUMBERS 2        // 2: On the two hand — digits
 #define _LARROW 3         // 3: On the left hand — arrow keys, on the right hand — digits
-#define _RARROW 4         // 4: On the right hand — arrow keys, on the left hand — digits
-#define _PURESHIFTFUNC 5  // 5: «Pure» and with Shift Fx keys
-#define _ALTCTRLFUNC 6    // 6: Fx keys with Alt and Ctrl
-#define _SPECIALCHARS 7   // 7: Special Characters
-
-// Readability keycodes
-#define K_MAIN   ACTION_DEFAULT_LAYER_SET(_MAIN)
-#define ARROWS   ACTION_DEFAULT_LAYER_SET(_ARROWS)
-#define NUMBRS   ACTION_DEFAULT_LAYER_SET(_NUMBERS)
-#define LARROW   ACTION_LAYER_MOMENTARY(_LARROW)
-#define RARROW   ACTION_LAYER_MOMENTARY(_RARROW)
-#define FUNCSH   ACTION_LAYER_MOMENTARY(_PURESHIFTFUNC)
-#define FUNCAC   ACTION_LAYER_MOMENTARY(_ALTCTRLFUNC)
-#define SPECCH   ACTION_LAYER_TAP_KEY(_SPECIALCHARS, KC_APP)
+#define _RARROW 4         // 4: On the left hand — digits, on the right hand — arrow keys
+#define _PSFUNC 5         // 5: «Pure» and with Shift Fx keys
+#define _ACFUNC 6         // 6: Fx keys with Alt and Ctrl
+#define _SCHARS 7         // 7: Special Characters
 
 const uint16_t PROGMEM fn_actions[] = {
-  [4] = ACTION_MACRO(ONCAPS),      //vkluchaem CapsLock — tam u nas russkie bukvy
-  [5] = ACTION_MACRO(OFFCAPS),     //otkluchaem CapsLock — perehodim na latinicu
-  [7] = ACTION_MACRO(NUMOFFP5ON),  //otkluchaet NumLock, vvodit 5 na cyfrovoj klave, vkluchaet Num — dlq FARa
-  [8] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_ESC), // TaskManager (Control,Shift+Esc)
+  [0] = ACTION_MACRO(ONCAPS),      //vkluchaem CapsLock — tam u nas russkie bukvy
+  [1] = ACTION_MACRO(OFFCAPS),     //otkluchaem CapsLock — perehodim na latinicu
+  [2] = ACTION_MACRO(NUMOFFP5ON),  //otkluchaet NumLock, vvodit 5 na cyfrovoj klave, vkluchaet Num — dlq FARa
+  [3] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_ESC), // TaskManager (Control,Shift+Esc)
 };
-
-/*const uint16_t PROGMEM fn_actions[] = {
-  [0] = ACTION_LAYER_MOMENTARY(3), // to LFn overlay
-//  [0] = ACTION_LAYER_ON_OFF(3), // to LFn overlay
-  [1] = ACTION_LAYER_MOMENTARY(4), // to RFn overlay
-//  [1] = ACTION_LAYER_ON_OFF(4), // to RFn overlay
-  [2] = ACTION_LAYER_MOMENTARY(5), // to CFx overlay - «Pure» and with Shift Fx keys
-//  [2] = ACTION_LAYER_ON_OFF(5), // to CFx overlay - «Pure» and with Shift Fx keys
-  [3] = ACTION_LAYER_TAP_KEY(_SPECIALCHARS, KC_APP), // to special symbols width APP key
-
-  [6] = ACTION_MACRO(ONNUM),       //vkluchaet NumLock, chtoby cyfry vvodit
-
-  [9] = ACTION_LAYER_MOMENTARY(6), // to CACFx overlay - Fx keys with Alt and Ctrl
-  [10] = ACTION_DEFAULT_LAYER_SET(0),    // switch to layer Default Letters
-  [11] = ACTION_DEFAULT_LAYER_SET(1),    // switch to layer Arrows
-  [12] = ACTION_DEFAULT_LAYER_SET(2),    // switch to layer Numbers
-  [13] = ACTION_MACRO(FN0M),  
-
-//ACTION_LAYER_CLEAR(ON_RELEASE)
-
-// Akcii rabotaut!!!
-
-  [10] = ACTION_MOUSEKEY(KC_WH_U), // wheel
-  [11] = ACTION_MOUSEKEY(KC_MS_U), // mouse movement
-
-//  Primery akcij iz drugih klaviatur
-    [3] = ACTION_DEFAULT_LAYER_SET(0)
-    [3] = ACTION_MODS_TAP_KEY(MOD_RALT, KC_APP),
-    [0] = ACTION_LAYER_MODS(1, MOD_LSFT),
-    [0] = ACTION_DEFAULT_LAYER_SET(0),                // Default layer(not used)
-    [1] = ACTION_LAYER_TAP_TOGGLE(1),                 // HHKB layer(toggle with 5 taps)
-    [2] = ACTION_LAYER_TAP_KEY(2, KC_SLASH),          // Cursor layer with Slash*
-    [3] = ACTION_LAYER_TAP_KEY(3, KC_SCLN),           // Mousekey layer with Semicolon*
-    [4] = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),      // RControl with tap Enter*
-    [5] = ACTION_MODS_ONESHOT(MOD_LSFT),              // Oneshot Shift*
-    [6] = ACTION_LAYER_TAP_KEY(5, KC_SPC),            // Mousekey layer with Space
-    [7] = ACTION_LAYER_TOGGLE(3),                     // Mousekey layer(toggle)
-    [8] = ACTION_MODS_KEY(MOD_LCTL, KC_W),            // Close Tab
-    [9] = ACTION_MODS_KEY(MOD_LSFT, KC_4),            // Shift stuck test
-
-  [8] = ACTION_LMOD_TAP_KEY(KC_LCTL, KC_BSPC),       // LControl with tap Backspace
-  [9] = ACTION_LMOD_TAP_KEY(KC_LCTL, KC_ESC),        // LControl with tap Esc
-  [11] = ACTION_FUNCTION_TAP(LSHIFT_LPAREN),         // Function: LShift with tap '('
-  [12] = ACTION_FUNCTION_TAP(RSHIFT_RPAREN),         // Function: RShift with tap ')'
-  [13] = ACTION_MACRO_TAP(LSHIFT_PAREN),             // Macro: LShift with tap '('
-  [14] = ACTION_MACRO_TAP(RSHIFT_PAREN),             // Macro: RShift with tap ')'
-  [15] = ACTION_MACRO(HELLO),                        // Macro: say hello
-  [9] = ACTION_MACRO(VOLUP),                         // Macro: media key
-  [3] = ACTION_FUNCTION(BOOTLOADER), // ToDo — BootLoader
-  [4] = ACTION_LAYER_TAP_KEY(4, KC_VOLU), // perekluchenie na russkij
-  [5] = ACTION_LAYER_TAP_KEY(0, KC_VOLD) // perekluchenie na anglijskij
-  [6] = ACTION_MODS_KEY(MOD_RCTL|MOD_RSFT, KC_ESC), // Task(RControl,RShift+Esc)
-  [7] = ACTION_LAYER_TAP_KEY(0, ALT(KC_P0), ALT(KC_P1), ALT(KC_P7), ALT(KC_P1)) // Task(RAlt+0171)
-  
-  MACRO( D(LALT), T(H), T(D), U(LALT), END ) eto budet zazhatie levogo alta, nazhatie H zatem nazhatie D i otpuskanie alta
-
-
-  [0] = ACTION_LAYER_MOMENTARY(1),  // to Fn overlay
-  [1] = ACTION_LAYER_ON(2, 1),  // switch to layer 2
-  [2] = ACTION_LAYER_OFF(2, 1),  // switch back to layer 0
-  [3] = ACTION_FUNCTION(BOOTLOADER), // reset for uploading new code
-  [4] = ACTION_LAYER_ON(3, 1),  // switch to layer 2
-  [5] = ACTION_LAYER_OFF(3, 1),  // switch back to layer 0
-
-  [6] = ACTION_MOUSEKEY(KC_MS_U), // mouse movement
-  [7] = ACTION_MOUSEKEY(KC_MS_D),
-  [8] = ACTION_MOUSEKEY(KC_MS_L),
-  [9] = ACTION_MOUSEKEY(KC_MS_R),
-  [10] = ACTION_MOUSEKEY(KC_WH_U), // wheel
-  [11] = ACTION_MOUSEKEY(KC_WH_D),
-  [12] = ACTION_MOUSEKEY(KC_WH_L),
-  [13] = ACTION_MOUSEKEY(KC_WH_R),
-  [14] = ACTION_MOUSEKEY(KC_BTN1), // clicks
-  [15] = ACTION_MOUSEKEY(KC_BTN2),
-  [16] = ACTION_MOUSEKEY(KC_BTN3),
-  [17] = ACTION_MOUSEKEY(KC_BTN4),
-  [18] = ACTION_MOUSEKEY(KC_BTN5),
-  [19] = ACTION_MOUSEKEY(KC_ACL0), // acceleration settings
-  [20] = ACTION_MOUSEKEY(KC_ACL1),
-  [21] = ACTION_MOUSEKEY(KC_ACL2),
-*/
 
 /* The default kKeyb layout. Layer is normal keys and punctuation */
 /* Matrix: Left Hand
                        +-------------+-------------+-------------+-------------+-------------+-------------+------------- 
-              none     ¦      ;      ¦      (      ¦       "     ¦      «      ¦      !      ¦      +      ¦    Win      ¦
-                       ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
+              none     ¦      ;      ¦      (      ¦       "     ¦      «      ¦      !      ¦      +      ¦    App      ¦
+                       ¦             ¦             ¦             ¦             ¦             ¦             ¦Special Chars¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
         ¦     ESC      ¦      @      ¦      J      ¦       C     ¦      U      ¦      K      ¦      Y      ¦   LARROW    ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦ LeftArrows  ¦
@@ -244,8 +79,8 @@ const uint16_t PROGMEM fn_actions[] = {
         ¦     TAB      ¦  BackSpace  ¦      Q      ¦       E     ¦      V      ¦      A      ¦      P      ¦  LeftShift  ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦     APP      ¦     FN5     ¦      F      ¦      <      ¦      S      ¦      M      ¦      I      ¦ LeftControl ¦
-        ¦Special Chars ¦     LAT     ¦             ¦             ¦             ¦             ¦             ¦             ¦
+        ¦     Win      ¦     FN1     ¦      F      ¦      <      ¦      S      ¦      M      ¦      I      ¦ LeftControl ¦
+        ¦              ¦     LAT     ¦             ¦             ¦             ¦             ¦             ¦             ¦
          --------------+-------------+-------------+-------------+-------------+-------------+-------------+------------- 
  
    Matrix: Right Hand                                                                                                
@@ -259,7 +94,7 @@ const uint16_t PROGMEM fn_actions[] = {
         ¦   Space      ¦      R      ¦      O      ¦      L      ¦      D      ¦      \      ¦   Enter     ¦   Pause     ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦  RightShift  ¦      T      ¦      X      ¦      B      ¦      >      ¦      ,      ¦     FN4     ¦   Left Alt  ¦
+        ¦  RightShift  ¦      T      ¦      X      ¦      B      ¦      >      ¦      ,      ¦     FN0     ¦   Left Alt  ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦     RUS     ¦             ¦
          --------------+-------------+-------------+-------------+-------------+-------------+-------------+------------- 
 */
@@ -267,22 +102,22 @@ const uint16_t PROGMEM fn_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* 0: mostly letters */
 //First four lines — the left hand, next four lines — the right hand
-[_MAIN] = LAYOUT_ortho_4x16(
-         KC_NO,         KC_GRV,         KC_1,           KC_2,           KC_3,          KC_4,           KC_5,      KC_LGUI,
-        KC_ESC,        KC_QUOT,         KC_J,           KC_C,           KC_U,          KC_K,           KC_Y,      LARROW,
+[_MAIN] = LAYOUT_ortho_8x8(
+         KC_NO,         KC_GRV,         KC_1,           KC_2,           KC_3,          KC_4,           KC_5, LT(_SCHARS, KC_APP),
+        KC_ESC,        KC_QUOT,         KC_J,           KC_C,           KC_U,          KC_K,           KC_Y,  MO(_LARROW),
         KC_TAB,        KC_BSPC,         KC_Q,           KC_E,           KC_V,          KC_A,           KC_P,      KC_LSFT,
-        SPECCH,         KC_FN5,         KC_F,        KC_COMM,           KC_S,          KC_M,           KC_I,      KC_LCTL,
+       KC_LGUI,         KC_FN1,         KC_F,        KC_COMM,           KC_S,          KC_M,           KC_I,      KC_LCTL,
 
-        FUNCSH,        KC_BSPC,         KC_7,           KC_8,           KC_9,          KC_0,        KC_MINS,        KC_NO,
-        RARROW,           KC_N,         KC_G,           KC_W,           KC_H,          KC_Z,        KC_LBRC,      KC_PSCR,
+   MO(_PSFUNC),        KC_BSPC,         KC_7,           KC_8,           KC_9,          KC_0,        KC_MINS,        KC_NO,
+   MO(_RARROW),           KC_N,         KC_G,           KC_W,           KC_H,          KC_Z,        KC_LBRC,      KC_PSCR,
         KC_SPC,           KC_R,         KC_O,           KC_L,           KC_D,       KC_SCLN,         KC_ENT,      KC_PAUS,
-       KC_RSFT,           KC_T,         KC_X,           KC_B,         KC_DOT,       KC_SLSH,         KC_FN4,      KC_LALT),
+       KC_RSFT,           KC_T,         KC_X,           KC_B,         KC_DOT,       KC_SLSH,         KC_FN0,      KC_LALT),
 
 /* 1: FN_ARROWS_LAYER On the left and right hands — arrows keys */
 /* Matrix: Left Hand
                        +-------------+-------------+-------------+-------------+-------------+-------------+------------- 
-              none     ¦     none    ¦      +      ¦       -     ¦      *      ¦      /      ¦     none    ¦    Win      ¦
-                       ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
+              none     ¦     none    ¦      +      ¦       -     ¦      *      ¦      /      ¦     none    ¦     App     ¦
+                       ¦             ¦             ¦             ¦             ¦             ¦             ¦Special Chars¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
         ¦     none     ¦     none    ¦     PgUp    ¦     End     ¦   Empty(5)  ¦     Home    ¦     none    ¦   LARROW    ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦ LeftArrows  ¦
@@ -311,16 +146,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 //First four lines — the left hand, next four lines — the right hand
-[_ARROWS] = LAYOUT_ortho_4x16(
-         KC_NO,          KC_NO,      KC_PPLS,        KC_PMNS,        KC_PAST,       KC_PSLS,          KC_NO,      KC_LGUI,
-         KC_NO,          KC_NO,      KC_PGUP,         KC_END,         KC_FN7,       KC_HOME,          KC_NO,      LARROW,
-        KC_TAB,        KC_BSPC,      KC_PGDN,        KC_LEFT,          KC_UP,       KC_RGHT,         KC_ENT,      KC_LSFT,
-        ARROWS,         K_MAIN,        KC_NO,      KC_DELETE,        KC_DOWN,        KC_INS,          KC_NO,        KC_NO,
+[_ARROWS] = LAYOUT_ortho_8x8(
+       KC_TRNS,          KC_NO,      KC_PPLS,        KC_PMNS,        KC_PAST,       KC_PSLS,          KC_NO,       KC_APP,
+       KC_TRNS,          KC_NO,      KC_PGUP,         KC_END,         KC_FN2,       KC_HOME,          KC_NO,        KC_NO,
+       KC_TRNS,        KC_BSPC,      KC_PGDN,        KC_LEFT,          KC_UP,       KC_RGHT,         KC_ENT,      KC_LSFT,
+         KC_NO,      TO(_MAIN),        KC_NO,      KC_DELETE,        KC_DOWN,        KC_INS,          KC_NO,      KC_LCTL,
 
-         KC_NO,        KC_BSPC,      KC_PSLS,        KC_PAST,        KC_PMNS,       KC_PPLS,          KC_NO,        KC_NO,
-        RARROW,          KC_NO,      KC_HOME,         KC_FN7,         KC_END,       KC_PGUP,          KC_NO,        KC_NO,
-       KC_LSFT,         KC_ENT,      KC_LEFT,          KC_UP,        KC_RGHT,       KC_PGDN,        KC_PENT,        KC_NO,
-       KC_LCTL,          KC_NO,       KC_INS,        KC_DOWN,      KC_DELETE,         KC_NO,         K_MAIN,       ARROWS),
+         KC_NO,        KC_BSPC,      KC_PSLS,        KC_PAST,        KC_PMNS,       KC_PPLS,          KC_NO,      KC_TRNS,
+         KC_NO,          KC_NO,      KC_HOME,         KC_FN2,         KC_END,       KC_PGUP,          KC_NO,       KC_ESC,
+       KC_LSFT,         KC_ENT,      KC_LEFT,          KC_UP,        KC_RGHT,       KC_PGDN,        KC_PENT,       KC_TAB,
+       KC_LCTL,          KC_NO,       KC_INS,        KC_DOWN,      KC_DELETE,         KC_NO,      TO(_MAIN),        KC_NO),
 
 /* 2: FN_NUMBERS_LAYER On the left and right hands — digits */
 /* Matrix: Left Hand
@@ -334,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ¦     Tab      ¦  BackSpace  ¦     none    ¦      4      ¦      5      ¦      6      ¦     Enter   ¦      0      ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦     none     ¦    Normal   ¦      ,      ¦      7      ¦      8      ¦      9      ¦      .      ¦     Num     ¦
+        ¦     none     ¦    Normal   ¦       ,     ¦      7      ¦      8      ¦      9      ¦      ,      ¦     Num     ¦
         ¦              ¦     Lock    ¦             ¦             ¦             ¦             ¦             ¦     Lock    ¦
          --------------+-------------+-------------+-------------+-------------+-------------+-------------+------------- 
  
@@ -355,16 +190,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 //First four lines — the left hand, next four lines — the right hand
-[_NUMBERS] = LAYOUT_ortho_4x16(
-         KC_NO,          KC_NO,      KC_PPLS,        KC_PMNS,        KC_PAST,       KC_PSLS,          KC_NO,      KC_LGUI,
-         KC_NO,          KC_NO,        KC_NO,          KC_P1,          KC_P2,         KC_P3,          KC_NO,       LARROW,
+[_NUMBERS] = LAYOUT_ortho_8x8(
+       KC_TRNS,          KC_NO,      KC_PPLS,        KC_PMNS,        KC_PAST,       KC_PSLS,          KC_NO,       KC_APP,
+       KC_TRNS,          KC_NO,        KC_NO,          KC_P1,          KC_P2,         KC_P3,          KC_NO,  MO(_LARROW),
         KC_TAB,        KC_BSPC,        KC_NO,          KC_P4,          KC_P5,         KC_P6,         KC_ENT,        KC_P0,
-         KC_NO,         K_MAIN,      KC_SLSH,          KC_P7,          KC_P8,         KC_P9,     S(KC_SLSH),       NUMBRS,
+       KC_LGUI,      TO(_MAIN),      KC_SLSH,          KC_P7,          KC_P8,         KC_P9,        KC_SLSH,        KC_NO,
 
-        FUNCSH,        KC_BSPC,      KC_PSLS,        KC_PAST,        KC_PMNS,       KC_PPLS,          KC_NO,        KC_NO,
-        RARROW,          KC_NO,        KC_P7,          KC_P8,          KC_P9,         KC_NO,          KC_NO,        KC_NO,
+   MO(_PSFUNC),        KC_BSPC,      KC_PSLS,        KC_PAST,        KC_PMNS,       KC_PPLS,          KC_NO,      KC_TRNS,
+   MO(_RARROW),          KC_NO,        KC_P7,          KC_P8,          KC_P9,         KC_NO,          KC_NO,        KC_NO,
          KC_P0,         KC_ENT,        KC_P4,          KC_P5,          KC_P6,         KC_NO,        KC_PENT,        KC_NO,
-        NUMBRS,     S(KC_SLSH),        KC_P1,          KC_P2,          KC_P3,       KC_SLSH,         K_MAIN,        KC_NO),
+         KC_NO,     S(KC_SLSH),        KC_P1,          KC_P2,          KC_P3,       KC_SLSH,      TO(_MAIN),        KC_NO),
 
 /* 3: FN_LARROW_LAYER On the left hand — arrows keys, on the right hand — digits */
 /* Matrix: Left Hand
@@ -399,16 +234,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 //First four lines — the left hand, next four lines — the right hand
-[_LARROW] = LAYOUT_ortho_4x16(
-         KC_NO,          KC_NO,      KC_PPLS,        KC_PMNS,        KC_PAST,       KC_PSLS,          KC_NO,        KC_NO,
-         KC_NO,          KC_NO,      KC_PGUP,         KC_END,         KC_FN7,       KC_HOME,          KC_NO,       LARROW,
+[_LARROW] = LAYOUT_ortho_8x8(
+       KC_TRNS,          KC_NO,      KC_PPLS,        KC_PMNS,        KC_PAST,       KC_PSLS,          KC_NO,        KC_NO,
+        KC_ESC,          KC_NO,      KC_PGUP,         KC_END,         KC_FN2,       KC_HOME,          KC_NO,      KC_TRNS,
      A(KC_TAB),        KC_BSPC,      KC_PGDN,        KC_LEFT,          KC_UP,       KC_RGHT,         KC_ENT,        KC_NO,
-        ARROWS,         K_MAIN,        KC_NO,      KC_DELETE,        KC_DOWN,        KC_INS,          KC_NO,       NUMBRS,
+   TO(_ARROWS),          KC_NO,        KC_NO,      KC_DELETE,        KC_DOWN,        KC_INS,          KC_NO, TO(_NUMBERS),
 
-         KC_NO,        KC_BSPC,      KC_PSLS,        KC_PAST,        KC_PMNS,       KC_PPLS,          KC_NO,        KC_NO,
+         KC_NO,        KC_BSPC,      KC_PSLS,        KC_PAST,        KC_PMNS,       KC_PPLS,          KC_NO,      KC_TRNS,
     S(KC_LCTL),          KC_NO,        KC_P7,          KC_P8,          KC_P9,         KC_NO,          KC_NO,        KC_NO,
          KC_P0,          KC_NO,        KC_P4,          KC_P5,          KC_P6,         KC_NO,        KC_PENT,        KC_NO,
-       KC_RSFT,     S(KC_SLSH),        KC_P1,          KC_P2,          KC_P3,       KC_SLSH,         K_MAIN,      KC_LCTL),
+       KC_RSFT,     S(KC_SLSH),        KC_P1,          KC_P2,          KC_P3,       KC_SLSH,          KC_NO,      KC_LCTL),
 
 /* 4: FN_RARROW_LAYER On the left hand — digits, on the right hand — arrows keys */
 /* Matrix: Left Hand
@@ -443,16 +278,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 //First four lines — the left hand, next four lines — the right hand
-[_RARROW] = LAYOUT_ortho_4x16(
-         KC_NO,          KC_NO,      KC_PPLS,        KC_PMNS,        KC_PAST,       KC_PSLS,          KC_NO,      KC_LGUI,
+[_RARROW] = LAYOUT_ortho_8x8(
+       KC_TRNS,          KC_NO,      KC_PPLS,        KC_PMNS,        KC_PAST,       KC_PSLS,          KC_NO,      KC_LGUI,
          KC_NO,          KC_NO,        KC_NO,          KC_P1,          KC_P2,         KC_P3,          KC_NO,      KC_LSFT,
          KC_NO,        KC_BSPC,        KC_NO,          KC_P4,          KC_P5,         KC_P6,          KC_NO,        KC_P0,
-         KC_NO,         K_MAIN,      KC_SLSH,          KC_P7,          KC_P8,         KC_P9,     S(KC_SLSH),      KC_LCTL,
+         KC_NO,          KC_NO,      KC_SLSH,          KC_P7,          KC_P8,         KC_P9,     S(KC_SLSH),      KC_LCTL,
 
-         KC_NO,          KC_NO,      KC_PSLS,        KC_PAST,        KC_PMNS,       KC_PPLS,          KC_NO,        KC_NO,
-        RARROW,          KC_NO,      KC_HOME,         KC_FN7,         KC_END,       KC_PGUP,          KC_NO,        KC_NO,
+         KC_NO,          KC_NO,      KC_PSLS,        KC_PAST,        KC_PMNS,       KC_PPLS,          KC_NO,      KC_TRNS,
+       KC_TRNS,          KC_NO,      KC_HOME,         KC_FN2,         KC_END,       KC_PGUP,          KC_NO,        KC_NO,
          KC_NO,         KC_ENT,      KC_LEFT,          KC_UP,        KC_RGHT,       KC_PGDN,        KC_PENT,    A(KC_TAB),
-        NUMBRS,          KC_NO,       KC_INS,        KC_DOWN,      KC_DELETE,         KC_NO,         K_MAIN,       ARROWS),
+  TO(_NUMBERS),          KC_NO,       KC_INS,        KC_DOWN,      KC_DELETE,         KC_NO,          KC_NO,  TO(_ARROWS)),
 
 /* 5: FN_PURESHIFTFUNC_LAYER «Pure» and with Shift Fx keys */
 /* Matrix: Left Hand
@@ -487,16 +322,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 //First four lines — the left hand, next four lines — the right hand
-[_PURESHIFTFUNC] = LAYOUT_ortho_4x16(
-         KC_NO,          KC_NO,        KC_NO,         KC_F11,         KC_F12,         KC_NO,          KC_NO,       FUNCAC,
+[_PSFUNC] = LAYOUT_ortho_8x8(
+       KC_TRNS,          KC_NO,        KC_NO,         KC_F11,         KC_F12,         KC_NO,          KC_NO,  MO(_ACFUNC),
          KC_NO,          KC_NO,        KC_NO,          KC_F1,          KC_F2,         KC_F3,          KC_NO,        KC_NO,
          KC_NO,          KC_NO,        KC_NO,          KC_F4,          KC_F5,         KC_F6,          KC_NO,       KC_F10,
-       KC_LALT,          KC_NO,        KC_NO,          KC_F7,          KC_F8,         KC_F9,          KC_NO,      KC_LCTL,
+       KC_LALT,          KC_NO,        KC_NO,          KC_F7,          KC_F8,         KC_F9,          KC_NO,      KC_TRNS,
 
-        FUNCSH,          KC_NO,        KC_NO,      S(KC_F11),      S(KC_F12),         KC_NO,          KC_NO,        KC_NO,
+       KC_TRNS,          KC_NO,        KC_NO,      S(KC_F11),      S(KC_F12),         KC_NO,          KC_NO,      KC_TRNS,
          KC_NO,          KC_NO,     S(KC_F7),       S(KC_F8),       S(KC_F9),         KC_NO,          KC_NO,        KC_NO,
      S(KC_F10),          KC_NO,     S(KC_F4),       S(KC_F5),       S(KC_F6),         KC_NO,          KC_NO,        KC_NO,
-       KC_RSFT,          KC_NO,     S(KC_F1),       S(KC_F2),       S(KC_F3),         KC_NO,          KC_NO,      KC_RSFT),
+         KC_NO,          KC_NO,     S(KC_F1),       S(KC_F2),       S(KC_F3),         KC_NO,     C(KC_BSLS),        KC_NO),
 
 /* 6: FN_ALTCTRLFUNC_LAYER Fx keys with Alt and Ctrl */
 /* Matrix: Left Hand
@@ -531,43 +366,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 //First four lines — the left hand, next four lines — the right hand
-[_ALTCTRLFUNC] = LAYOUT_ortho_4x16(
-         KC_NO,          KC_NO,        KC_NO,      A(KC_F11),      A(KC_F12),         KC_NO,          KC_NO,       FUNCAC,
+[_ACFUNC] = LAYOUT_ortho_8x8(
+       KC_TRNS,          KC_NO,        KC_NO,      A(KC_F11),      A(KC_F12),         KC_NO,          KC_NO,      KC_TRNS,
          KC_NO,          KC_NO,        KC_NO,       A(KC_F1),       A(KC_F2),      A(KC_F3),          KC_NO,        KC_NO,
          KC_NO,          KC_NO,        KC_NO,       A(KC_F4),       A(KC_F5),      A(KC_F6),          KC_NO,    A(KC_F10),
-       KC_LALT,          KC_NO,        KC_NO,       A(KC_F7),       A(KC_F8),      A(KC_F9),          KC_NO,      KC_LCTL,
+       KC_LALT,          KC_NO,        KC_NO,       A(KC_F7),       A(KC_F8),      A(KC_F9),          KC_NO,      KC_LSFT,
 
-        FUNCSH,          KC_NO,        KC_NO,      C(KC_F11),      C(KC_F12),         KC_NO,          KC_NO,        KC_NO,
+         KC_NO,          KC_NO,        KC_NO,      C(KC_F11),      C(KC_F12),         KC_NO,          KC_NO,      KC_TRNS,
          KC_NO,          KC_NO,     C(KC_F7),       C(KC_F8),       C(KC_F9),         KC_NO,          KC_NO,        KC_NO,
      C(KC_F10),          KC_NO,     C(KC_F4),       C(KC_F5),       C(KC_F6),         KC_NO,          KC_NO,        KC_NO,
-       KC_RSFT,          KC_NO,     C(KC_F1),       C(KC_F2),       C(KC_F3),         KC_NO,          KC_NO,      KC_LALT),
+         KC_NO,          KC_NO,     C(KC_F1),       C(KC_F2),       C(KC_F3),         KC_NO,          KC_NO,        KC_NO),
 
 /* 7: FN_SPECIALCHARS_LAYER Special Characters */
 /* Matrix: Left Hand
                        +-------------+-------------+-------------+-------------+-------------+-------------+------------- 
-              none     ¦      `      ¦      ~      ¦       '     ¦     none    ¦     none    ¦      ±      ¦    none     ¦
+              none     ¦      `      ¦      ~      ¦       '     ¦       “     ¦    n-Dash   ¦      ±      ¦Special Chars¦
                        ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦Ctrl+Shift+Esc¦     none    ¦     none    ¦       1     ¦       2     ¦       3     ¦     none    ¦    none     ¦
+        ¦Ctrl+Shift+Esc¦     none    ¦     none    ¦             ¦             ¦             ¦     none    ¦    none     ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦     none     ¦  BackSpace  ¦       .     ¦       4     ¦       5     ¦       6     ¦     Enter   ¦    none     ¦
+        ¦     none     ¦  BackSpace  ¦             ¦             ¦             ¦             ¦ Shift+Enter ¦    Space    ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦      APP     ¦     none    ¦       ,     ¦       7     ¦       8     ¦       9     ¦       0     ¦    none     ¦
-        ¦Special Chars ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
+        ¦     none     ¦     none    ¦             ¦             ¦             ¦             ¦             ¦    none     ¦
+        ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
          --------------+-------------+-------------+-------------+-------------+-------------+-------------+------------- 
  
    Matrix: Right Hand                                                                                                
          --------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦     none     ¦    Accent   ¦      –      ¦      —      ¦ Multiplicat ¦   Division  ¦     none    ¦     none
+        ¦     none     ¦    Accent   ¦    m-Dash   ¦      ”      ¦       ×     ¦       ÷     ¦       ‰     ¦     none
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦     none     ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦
+        ¦     Enter    ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-        ¦     Space    ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦
-        ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
+        ¦NonBreackable ¦     none    ¦     none    ¦     none    ¦     none    ¦     none    ¦     Enter   ¦     none    ¦
+        ¦    Space     ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
         +--------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
         ¦  RightShift  ¦     none    ¦     none    ¦     none    ¦     none    ¦      …      ¦     none    ¦  NumLock On ¦
         ¦              ¦             ¦             ¦             ¦             ¦             ¦             ¦             ¦
@@ -575,20 +410,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 //First four lines — the left hand, next four lines — the right hand
-[_SPECIALCHARS] = LAYOUT_ortho_4x16(
-         KC_NO,       S(KC_6),         KC_EQL,           KC_6,          KC_NO,          KC_NO,       KC_RBRC,        KC_NO,
-        KC_FN8,         KC_NO,          KC_NO,          KC_P1,          KC_P2,          KC_P3,         KC_NO,        KC_NO,
-         KC_NO,       KC_BSPC,     S(KC_SLSH),          KC_P4,          KC_P5,          KC_P6,        KC_ENT,        KC_NO,
-        SPECCH,      KC_LCTRL,        KC_SLSH,          KC_P7,          KC_P8,          KC_P9,         KC_P0,        KC_NO,
+[_SCHARS] = LAYOUT_ortho_8x8(
+       KC_TRNS,       S(KC_6),        KC_NUBS,           KC_6,        KC_RBRC,         KC_EQL,  ALGR(KC_EQL),      KC_TRNS,
+        KC_FN3,    S(KC_RBRC),          KC_NO,          KC_NO,          KC_NO,          KC_NO,         KC_NO,        KC_NO,
+  A(S(KC_TAB)),       KC_BSPC,          KC_NO,  ALGR(KC_RBRC),          KC_NO,          KC_NO,        KC_ENT,       KC_SPC,
+         KC_NO,    C(KC_BSLS),          KC_NO,          KC_NO,          KC_NO,          KC_NO,         KC_NO,        KC_NO,
 
-         KC_NO,     S(KC_EQL),        KC_NUBS,     S(KC_NUBS),        KC_BSLS,     S(KC_BSLS),         KC_NO,        KC_NO,
-         KC_NO,         KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,         KC_NO,        KC_NO,
-        KC_SPC,         KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,         KC_NO,        KC_NO,
-       KC_RSFT,         KC_NO,          KC_NO,          KC_NO,          KC_NO,     S(KC_RBRC),         KC_NO,       KC_FN6),
+       KC_LSFT,    S(KC_NUBS),      S(KC_EQL),        KC_BSLS,  ALGR(KC_NUBS), ALGR(S(KC_NUBS)), ALGR(S(KC_EQL)),  KC_TRNS,
+         KC_NO,         KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,    S(KC_BSLS),        KC_NO,
+  ALGR(KC_SPC),         KC_NO,  ALGR(KC_RBRC),          KC_NO,          KC_NO,          KC_NO,     S(KC_ENT),        KC_NO,
+       KC_RSFT,         KC_NO,  ALGR(KC_BSLS),          KC_NO,          KC_NO,  ALGR(KC_PDOT),         KC_NO,      KC_RSFT),
 };
 
 void matrix_init_user(void) {
-
+//  setPinOutput(B0);
+//  setPinOutput(D5);
 }
 
 void matrix_scan_user(void) {
