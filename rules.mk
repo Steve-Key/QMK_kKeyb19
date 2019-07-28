@@ -49,6 +49,7 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #     different sizes, comment this out, and the correct address will be loaded 
 #     automatically (+60). See bootloader.mk for all options.
 BOOTLOADER = atmel-dfu
+# BOOTLOADER = caterina
 
 # Build Options
 #   change yes to no to disable
@@ -70,4 +71,4 @@ AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 HD44780_ENABLE = no 		# Enable support for HD44780 based LCDs (+400)
 
-LAYOUTS = ortho_4x16 
+LAYOUTS = ortho_8x8 

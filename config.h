@@ -4,11 +4,11 @@
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEFE
-#define PRODUCT_ID      0x3131
-#define DEVICE_VER      0x0213
+#define PRODUCT_ID      0x3113
+#define DEVICE_VER      0x2131
 #define MANUFACTURER    Steve KEY Laboratory
-#define PRODUCT         kKeyb v.2.19.0
-#define DESCRIPTION     A split 60% keyboard by Steve Key
+#define PRODUCT         kKeyb v.2.19.1
+#define DESCRIPTION     A ergonomical 60% keyboard by Steve Key
 
 /* key matrix size */
 #define MATRIX_ROWS 8
@@ -24,9 +24,9 @@
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
 */
-#define MATRIX_ROW_PINS { D3, F4, F5, F6, F7, B1, B3, B2 }
-#define MATRIX_COL_PINS { B0, D2, D0, D1, D4, C6, D7, E6 }
-#define UNUSED_PINS { B4, B5, B6, B7, C7, F0, F1 }
+#define MATRIX_ROW_PINS { D1, D0, D4, C6, F4, F5, F6, F7 }
+#define MATRIX_COL_PINS { B1, B3, B2, B6, D7, E6, B4, B5 }
+#define UNUSED_PINS { D6, E2 }
 
 /* COL2ROW, ROW2COL, or CUSTOM_MATRIX */
 #define DIODE_DIRECTION COL2ROW
